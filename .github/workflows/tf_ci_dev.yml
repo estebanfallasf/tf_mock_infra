@@ -9,11 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: './non-prod/us-east-2/dev/' 
+        working-directory: ./non-prod/us-east-2/dev/ 
     permissions:
       pull-requests: write
 
     steps:
+     - name: Checkout
+       uses: actions/checkout@v3
+
      - name: Configure AWS Credentials
        id: configure-aws
        uses: aws-actions/configure-aws-credentials@v1
