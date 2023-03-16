@@ -26,6 +26,7 @@ jobs:
         id: WD 
         uses: dorny/paths-filter@v2
         with:
+          list-files: 'json'
           filters: |
             dev:
               - added|deleted|modified: 'non-prod/*/dev/**'
@@ -33,6 +34,8 @@ jobs:
               - added|deleted|modified: 'non-prod/*/qa/**'
             prod:
               - added|deleted|modified: 'prod/*/prod/**'
+
+      - run: echo ${{ steps.WD.outputs.changes }}
                 
   tf_ci_dev:
     needs: setup_terraform
